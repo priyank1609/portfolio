@@ -3,7 +3,6 @@ import SkillsTools from './SkillsTools';
 import Experience from './Experience';
 import Projects from './Projects';
 import Education from './Education';
-import Contact from './Contact';
 
 function Body() {
   return (
@@ -13,7 +12,6 @@ function Body() {
       <Experience />
       <Projects />
       <Education />
-      <Contact />
     </main>
   );
 }

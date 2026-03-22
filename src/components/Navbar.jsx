@@ -10,7 +10,6 @@ function Navbar() {
     { label: 'Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
     { label: 'Education', href: '#education' },
-    { label: 'Contact', href: '#contact' },
   ];
 
   return (
@@ -52,7 +51,7 @@ function Navbar() {
             href="#contact"
             className="hidden md:inline-flex items-center gap-2 px-5 py-2 text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 shadow-md shadow-cyan-500/25 hover:shadow-cyan-400/40 hover:-translate-y-0.5"
           >
-            Contact Me
+            Let's Talk
             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -107,7 +106,7 @@ function Navbar() {
               href="#contact"
               className="block mt-2 px-4 py-2.5 text-sm font-semibold text-center text-white bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg"
             >
-              Contact Me
+              Let's Talk
             </a>
           </li>
         </ul>
