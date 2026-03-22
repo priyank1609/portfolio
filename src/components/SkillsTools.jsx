@@ -71,30 +71,54 @@ const skillCategories = [
 
 function ScrollRow({ categories, direction = 'left' }) {
   const scrollRef = useRef(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const translateX = useRef(0);
+  const animationId = useRef(null);
+  const position = useRef(direction === 'left' ? 0 : 0);
+  const speed = useRef(direction === 'left' ? 0.5 : -0.5);
 
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
 
-    let animationId;
-    let position = direction === 'left' ? 0 : -el.scrollWidth / 2;
-    const speed = direction === 'left' ? 0.5 : -0.5;
-
     const animate = () => {
-      position -= speed;
-      if (direction === 'left' && Math.abs(position) >= el.scrollWidth / 2) {
-        position = 0;
+      if (!isDragging.current) {
+        position.current -= speed.current;
+        if (direction === 'left' && Math.abs(position.current) >= el.scrollWidth / 2) {
+          position.current = 0;
+        }
+        if (direction === 'right' && position.current >= 0) {
+          position.current = -el.scrollWidth / 2;
+        }
+        el.style.transform = `translateX(${position.current}px)`;
       }
-      if (direction === 'right' && position >= 0) {
-        position = -el.scrollWidth / 2;
-      }
-      el.style.transform = `translateX(${position}px)`;
-      animationId = requestAnimationFrame(animate);
+      animationId.current = requestAnimationFrame(animate);
     };
 
-    animationId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationId);
+    animationId.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationId.current);
   }, [direction]);
+
+  const handleTouchStart = (e) => {
+    isDragging.current = true;
+    startX.current = e.touches[0].clientX;
+    translateX.current = position.current;
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging.current) return;
+    const currentX = e.touches[0].clientX;
+    const diff = currentX - startX.current;
+    position.current = translateX.current + diff;
+    if (scrollRef.current) {
+      scrollRef.current.style.transform = `translateX(${position.current}px)`;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    isDragging.current = false;
+  };
 
   const cards = categories.map((cat, i) => (
     <div
@@ -126,7 +150,13 @@ function ScrollRow({ categories, direction = 'left' }) {
 
   return (
     <div className="overflow-hidden">
-      <div ref={scrollRef} className="flex gap-6 w-max">
+      <div
+        ref={scrollRef}
+        className="flex gap-6 w-max cursor-grab active:cursor-grabbing select-none"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         {cards}
         {cards}
       </div>

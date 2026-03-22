@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const projects = [
@@ -41,9 +41,23 @@ const projects = [
 
 function Projects() {
   const [current, setCurrent] = useState(0);
+  const touchStartX = useRef(0);
 
   const prev = () => setCurrent((c) => (c === 0 ? projects.length - 1 : c - 1));
   const next = () => setCurrent((c) => (c === projects.length - 1 ? 0 : c + 1));
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) next();
+      else prev();
+    }
+  };
 
   const project = projects[current];
 
@@ -72,7 +86,11 @@ function Projects() {
           </button>
 
           {/* Card */}
-          <div className="relative rounded-2xl border border-slate-700/60 bg-slate-800/40 backdrop-blur-sm p-8 md:p-10 overflow-hidden">
+          <div
+            className="relative rounded-2xl border border-slate-700/60 bg-slate-800/40 backdrop-blur-sm p-8 md:p-10 overflow-hidden cursor-grab active:cursor-grabbing select-none"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             {/* Gradient bottom border accent */}
             <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500" />
 
