@@ -1,15 +1,15 @@
 const education = [
   {
     degree: 'Master of Computer Applications (MCA)',
-    institution: 'Maharaja Surajmal Institute (GGSIPU)',
-    period: '2019 – 2021',
-    grade: '8.2 CGPA',
+    institution: 'Maharishi University (MUIT)',
+    period: '2023 – 2025',
+    grade: '80%',
   },
   {
     degree: 'Bachelor of Computer Applications (BCA)',
-    institution: 'Maharaja Surajmal Institute (GGSIPU)',
-    period: '2016 – 2019',
-    grade: '75%',
+    institution: 'Guru Gobind Singh Indraprastha University (GGSIPU)',
+    period: '2017 – 2020',
+    grade: '74%',
   },
 ];
 
