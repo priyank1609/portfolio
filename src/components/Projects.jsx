@@ -3,8 +3,37 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const projects = [
   {
+    title: 'HealthX Smart Fitness Tracker',
+    domain: 'Web Application',
+    github: 'https://github.com/priyank1609/fitness-tracker',
+    tech: ['React.js', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Chart.js', 'Local Storage'],
+    points: [
+      'Developed a fitness tracking web application using React.js to log workouts, manage sets/reps/weight, and perform CRUD operations for daily exercise tracking.',
+      'Built a dashboard-based interface with workout history, weight tracking, BMI calculator, and diet planning features to enable data-driven fitness monitoring.',
+      'Implemented interactive charts and analytics using Chart.js to visualize workout trends, calorie intake, and weight progress over time.',
+      'Designed reusable and modular UI components using React Hooks, ensuring scalable architecture, efficient state management, and improved maintainability.',
+      'Integrated client-side data persistence using Local Storage, enabling seamless user experience without backend dependency.',
+      'Developed a responsive and performance-optimized UI using modern HTML5 and CSS3 for smooth user interaction across devices.',
+    ],
+  },
+  {
+    title: 'Personal Developer Portfolio',
+    domain: 'Web Application',
+    github: 'https://github.com/priyank1609/portfolio',
+    tech: ['React.js', 'Next.js', 'TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Tailwind CSS', 'Vite/Netlify'],
+    points: [
+      'Developed a personal portfolio web application using React.js and modern frontend technologies to showcase projects, technical skills, and professional experience.',
+      'Built modular and reusable UI components using React Hooks, ensuring scalable architecture and maintainable code structure.',
+      'Implemented responsive and performance-optimized design using HTML5, CSS3, and modern styling frameworks, ensuring seamless experience across devices.',
+      'Integrated project showcase section with live demos and GitHub links, improving visibility of development work and user engagement.',
+      'Optimized application performance using code splitting, lazy loading, and efficient rendering techniques for faster load times.',
+      'Deployed the application on Netlify with CI/CD workflows, enabling continuous deployment and smooth updates.',
+    ],
+  },
+  {
     title: 'Virtual Cryptography Lab',
     domain: 'Web Application',
+    github: 'https://github.com/priyank1609/Virtual-Crypto-Lab',
     tech: ['React.js', 'HTML5', 'CSS3'],
     points: [
       'Developed an interactive web-based educational platform using React.js to simulate symmetric and asymmetric encryption algorithms, enabling users to visualize real-time encryption and decryption processes.',
@@ -16,6 +45,7 @@ const projects = [
   {
     title: 'AudioFlux Player',
     domain: 'Frontend Web Application',
+    github: null,
     tech: ['JavaScript (ES6+)', 'HTML5', 'CSS3'],
     points: [
       'Developed a responsive web-based music streaming interface featuring playlist management, navigation menus, and media playback controls to simulate a modern digital audio platform.',
@@ -28,6 +58,7 @@ const projects = [
   {
     title: 'Car Trading Platform',
     domain: 'Full-Stack Web Application',
+    github: 'https://github.com/priyank1609/sellandbuycars-project',
     tech: ['HTML5', 'CSS3', 'Bootstrap', 'Java', 'Spring Boot', 'MySQL'],
     points: [
       'Designed and developed a full-stack vehicle marketplace platform enabling users to list, browse, and manage car listings through a secure web interface.',
@@ -134,6 +165,23 @@ function Projects() {
                     </li>
                   ))}
                 </ul>
+
+                {/* GitHub Link */}
+                {project.github && (
+                  <div className="mt-6 pt-4 border-t border-slate-700/50">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 hover:text-white hover:border-cyan-500/50 hover:bg-slate-700 transition-all duration-300 text-sm font-medium"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                      </svg>
+                      View on GitHub
+                    </a>
+                  </div>
+                )}
               </motion.div>
             </AnimatePresence>
           </div>
